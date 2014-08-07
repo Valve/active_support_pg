@@ -22,13 +22,11 @@ foxes
 
 All functions are written in PG/PGSQL language.
 
-To use them in your database, run the contents of `lib/as` inside your
+To use them in your database, run the contents of `lib/as.sql` inside your
 migration:
 
 ```ruby
-sql = '
-...
-'
+sql = read_sql()
 execute sql
 ```
 
