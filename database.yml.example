@@ -1,0 +1,8 @@
+# connection options are passed directly to PG:Connection
+# and should have same names
+# http://deveiate.org/code/pg/PG/Connection.html
+host: localhost
+dbname: test
+port: 5432
+user: example
+password: example_password
