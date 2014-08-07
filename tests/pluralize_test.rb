@@ -14,7 +14,6 @@ describe 'pluralize' do
       "fish"        => "fish",
       "jeans"       => "jeans",
       "funky jeans" => "funky jeans",
-      #"my money"    => "my money",
 
       "category"    => "categories",
       "query"       => "queries",
@@ -32,10 +31,10 @@ describe 'pluralize' do
 
       "move"        => "moves",
 
-      #"salesperson" => "salespeople",
+      "salesperson" => "salespeople",
       "person"      => "people",
 
-      #"spokesman"   => "spokesmen",
+      "spokesman"   => "spokesmen",
       "man"         => "men",
       "woman"       => "women",
 
@@ -49,7 +48,7 @@ describe 'pluralize' do
       "analysis"    => "analyses",
       "my_analysis" => "my_analyses",
 
-      #"node_child"  => "node_children",
+      "node_child"  => "node_children",
       "child"       => "children",
 
       "experience"  => "experiences",

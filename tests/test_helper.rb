@@ -21,5 +21,5 @@ def pg_conn
 end
 
 def read_library_code
-  File.read('./pluralize.sql')
+  File.read('./src/as.sql')
 end
