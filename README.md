@@ -1,6 +1,8 @@
 active_support_pg
 =================
 
+## This is a work in progress, contributions are welcome.
+
 Ever wanted to have your ActiveSupport helpers in your PostgreSQL
 database?
 
@@ -83,7 +85,6 @@ def down
 end
 ```
 
-This is a work in progress, contributions are welcome.
 
 ## Running tests (requires ruby & PostgreSQL)
 
