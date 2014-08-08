@@ -6,6 +6,8 @@ database?
 
 Now you can:
 
+### Pluralize
+
 ```sql
 select pluralize('person');
 -------------
@@ -18,6 +20,19 @@ women
 select pluralize('fox');
 -------------
 foxes
+```
+
+### Humanize
+
+```sql
+select humanize('i_love_postgres');
+-------------
+I love postgres
+
+select pluralize('person_id');
+-------------
+Person
+
 ```
 
 All functions are written in PG/PGSQL language.

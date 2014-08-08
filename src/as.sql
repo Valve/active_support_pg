@@ -58,3 +58,15 @@ begin
 end
 $$ language plpgsql;
 
+create or replace function humanize(input varchar)
+  returns varchar
+as
+  $$
+begin
+  input := regexp_replace(input, '^_+', '', 'g');
+  input := regexp_replace(input, '_id$', '');
+  input := regexp_replace(input, '_', ' ', 'g');
+  input := upper(substring(input from 1 for 1)) || lower(substring(input from 2));
+  return input;
+end
+$$ language plpgsql;
