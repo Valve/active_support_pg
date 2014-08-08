@@ -85,7 +85,7 @@ end
 
 This is a work in progress, contributions are welcome.
 
-## Running tests (requires ruby)
+## Running tests (requires ruby & PostgreSQL)
 
 1. cd into the directory and `bundle install`
 1. Copy the `database.yml.example` to `database.yml`
