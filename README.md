@@ -6,6 +6,23 @@ database?
 
 Now you can:
 
+### Parameterize
+
+```sql
+select parameterize('Ég elska Ísland mjög-mikið');
+--------------------------
+ eg-elska-sland-mjog-miki
+
+fivesearch=# select parameterize('---**I love iceland**---');
+----------------
+ i-love-iceland
+
+
+select parameterize('I love 中國');
+--------------
+ i-love
+```
+
 ### Pluralize
 
 ```sql
@@ -29,7 +46,7 @@ select humanize('i_love_postgres');
 -------------
 I love postgres
 
-select pluralize('person_id');
+select humanize('person_id');
 -------------
 Person
 
@@ -37,12 +54,24 @@ Person
 
 All functions are written in PG/PGSQL language.
 
-To use them in your database, run the contents of `lib/as.sql` inside your
+To use them in your database, run the contents of `src/as.sql` inside your
 migration:
 
 ```ruby
-sql = read_sql()
-execute sql
+def up
+  sql = File.read(Rails.root.join('db/scripts/as.sql'))
+  execute sql
+end
+```
+
+To drop them, add the contents of `src/as_drop.sql` to the `down`
+section of the migration:
+
+```ruby
+def down
+  sql = File.read(Rails.root.join('db/scripts/as_drop.sql'))
+  execute sql
+end
 ```
 
 This is a work in progress, contributions are welcome.
@@ -52,7 +81,7 @@ This is a work in progress, contributions are welcome.
 1. cd into the directory and `bundle install`
 1. Copy the `database.yml.example` to `database.yml`
 2. Change your connection settings in `database.yml`
-3. Run  `rake setup`
+3. Run  `rake setup` (only once)
 4. Run `rake test`
 
 

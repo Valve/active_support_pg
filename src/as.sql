@@ -1,5 +1,6 @@
 create or replace function pluralize(input varchar)
   returns varchar
+  immutable
 as
   $$
 declare
@@ -60,6 +61,7 @@ $$ language plpgsql;
 
 create or replace function humanize(input varchar)
   returns varchar
+  immutable
 as
   $$
 begin
@@ -68,5 +70,41 @@ begin
   input := regexp_replace(input, '_', ' ', 'g');
   input := upper(substring(input from 1 for 1)) || lower(substring(input from 2));
   return input;
+end
+$$ language plpgsql;
+
+create or replace function dasherize(input varchar)
+  returns varchar
+  immutable
+as
+  $$
+begin
+  input := regexp_replace(input, '_', '-', 'g');
+  return input;
+end
+$$ language plpgsql;
+
+create or replace function parameterize(input varchar)
+  returns varchar
+  immutable
+as
+  $$
+declare
+  sep char = '-';
+begin
+  input := lower(input);
+  input := translate(lower(input),
+  'Éáàâãäåāăąèééêëēĕėęěìíîïìĩīĭḩóôõöōŏőùúûüũūŭůäàáâãåæçćĉčöòóôõøüùúûßéèêëýñîìíïş',
+  'eaaaaaaaaaeeeeeeeeeeiiiiiiiihooooooouuuuuuuuaaaaaaeccccoooooouuuuseeeeyniiiis');
+  -- handle more cases more efficiently
+  input := replace(input, 'æ', 'ae');
+  input := replace(input, 'Æ', 'ae');
+  input := replace(input, 'ß', 's');
+  input := regexp_replace(input, '[^a-z0-9\-_]+', sep, 'gi');
+  -- No more than one of the separator in a row.
+  input := regexp_replace(input, '\' || sep || '{2,}', sep, 'g');
+  -- remove leading and trailing separators
+  input := regexp_replace(input, '^' || sep || '|' || sep || '$', '', 'g');
+  return lower(input);
 end
 $$ language plpgsql;
