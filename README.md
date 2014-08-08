@@ -52,6 +52,15 @@ Person
 
 ```
 
+### Dasherize
+
+```sql
+select humanize('i_love_postgres');
+-------------
+i-love-postgres
+
+```
+
 All functions are written in PG/PGSQL language.
 
 To use them in your database, run the contents of `src/as.sql` inside your
