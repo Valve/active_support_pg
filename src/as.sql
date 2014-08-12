@@ -1,6 +1,6 @@
 create or replace function pluralize(input varchar)
   returns varchar
-  immutable
+  immutable strict
 as
   $$
 declare
@@ -61,7 +61,7 @@ $$ language plpgsql;
 
 create or replace function humanize(input varchar)
   returns varchar
-  immutable
+  immutable strict
 as
   $$
 begin
@@ -75,7 +75,7 @@ $$ language plpgsql;
 
 create or replace function dasherize(input varchar)
   returns varchar
-  immutable
+  immutable strict
 as
   $$
 begin
@@ -86,7 +86,7 @@ $$ language plpgsql;
 
 create or replace function parameterize(input varchar)
   returns varchar
-  immutable
+  immutable strict
 as
   $$
 declare
